@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Framework.Core.AppSettingManager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,6 +17,7 @@ namespace PCloud.Web
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            AppSettingConfig.Configure(configuration);
         }
 
         public IConfiguration Configuration { get; }
@@ -32,6 +34,8 @@ namespace PCloud.Web
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+           // services.Configure<>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

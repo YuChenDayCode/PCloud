@@ -23,3 +23,11 @@ C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.We
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.Web.dll
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.Web.pdb
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.Web.csproj.CopyComplete
+C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.Web.csprojAssemblyReference.cache
+C:\Users\YuChen\source\repos\PCloud\PCloud.Web\bin\Debug\netcoreapp2.2\Framework.dll
+C:\Users\YuChen\source\repos\PCloud\PCloud.Web\bin\Debug\netcoreapp2.2\PCloud.Framework.dll
+C:\Users\YuChen\source\repos\PCloud\PCloud.Web\bin\Debug\netcoreapp2.2\Framework.pdb
+C:\Users\YuChen\source\repos\PCloud\PCloud.Web\bin\Debug\netcoreapp2.2\PCloud.Framework.pdb
+C:\Users\YuChen\source\repos\PCloud\PCloud.Web\bin\Debug\netcoreapp2.2\PCloud.Entity.dll
+C:\Users\YuChen\source\repos\PCloud\PCloud.Web\bin\Debug\netcoreapp2.2\PCloud.Entity.pdb
+C:\Users\YuChen\source\repos\PCloud\PCloud.Web\bin\Debug\netcoreapp2.2\ConfigResource\mysqlconfig.xml

@@ -3,37 +3,33 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PCloud.Web</title>
+    <title>@ViewData["Title"] - PCloud.We1b</title>
 
 
-    <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/layui/css/layui.css" />
-
+    <link href="~/css/global.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PCloud.Web</a>
-
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                        </li>
-                    </ul>
-                </div>
+    <div class="fly-header fly-panel fly-column">
+        <div class="layui-container">
+            <ul class="layui-clear">
+                <li class="layui-this"><a href="/">首页</a></li>
+                <li class=""><a href="">提问</a></li>
+                <li><a href="">分享<span class="layui-badge-dot"></span></a></li>
+                <li><a href="">讨论</a></li>
+                <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
+                <!-- 用户登入后显示 -->
+            </ul>
+            <div class="fly-column-right layui-hide-xs">
+                <span class="fly-search"><i class="layui-icon"></i></span>
+                <a href="add.html" class="layui-btn">其他</a>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
+        </div>
+    </div>
+    <div class="layui-container">
+            @RenderBody()
+    </div>
 
     <script src="~/lib/layui/layui.js"></script>
     @RenderSection("Scripts", required: false)
