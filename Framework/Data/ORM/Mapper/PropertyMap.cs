@@ -19,12 +19,13 @@ namespace Framework.Data.ORM
 
         public string Name => PropertyInfo.Name;
 
-        readonly string tableName;
+
+        public string TableName { get; }
 
         public PropertyMap(PropertyInfo propertyInfo, string tableName)
         {
             this.PropertyInfo = propertyInfo;
-            this.tableName = tableName;
+            this.TableName = tableName;
             this.Ignore = GetIgnoreAttribute(propertyInfo);
             this.PrimaryKey = propertyInfo.GetCustomAttribute<PrimaryKey>();
             this.ColumnName = GetColumnAttribute(propertyInfo);
@@ -50,7 +51,7 @@ namespace Framework.Data.ORM
 
         public string GetMapperColumnName(string split = ".")
         {
-            return $"{tableName}{split}{this.ColumnName}";
+            return $"{this.TableName}{split}{this.ColumnName}";
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Framework.Data.ORM
@@ -25,6 +26,7 @@ namespace Framework.Data.ORM
         protected T entity;
         protected IEnumerable<IPropertyMap> property;
         private Func<IEnumerable<IPropertyMap>, string> format;
+        protected Where _where;
         public Constructor()
         {
             this.entitymap = new EntityMapper<T>();
@@ -39,6 +41,34 @@ namespace Framework.Data.ORM
             this.format = new Func<IEnumerable<IPropertyMap>, string>(BuildInsert);
             return this;
         }
+        public Constructor<T> Update(T entity)
+        {
+            _DMLType = DMLType.Update;
+            this.entity = entity;
+            this.property = from t in this.entitymap.PropertyMaps
+                            where t.PrimaryKey == null && t.Ignore == false
+                            select t;
+            this.format = new Func<IEnumerable<IPropertyMap>, string>(BuildUpdate);
+            return this;
+        }
+        public Constructor<T> Update(T entity,params string[] arrs)
+        {
+            _DMLType = DMLType.Update;
+            var partmap = from t in this.entitymap.PropertyMaps where arrs.Contains(t.Name) select t;
+            this.entity = entity;
+            this.property = from t in partmap
+                            where t.PrimaryKey == null && t.Ignore == false
+                            select t;
+            this.format = new Func<IEnumerable<IPropertyMap>, string>(BuildUpdate);
+            return this;
+        }
+
+        public Constructor<T> where(Expression<Func<T, object>> expressions)
+        {
+            _where = Where.Parse(expressions, this.entitymap.PropertyMaps);
+            return this;
+        }
+       
 
         /// <summary>
         /// 构造语句
@@ -48,11 +78,16 @@ namespace Framework.Data.ORM
         {
             var sql = new StringBuilder();
             sql.Append($"{this._DMLType} {this.entitymap.TabelName} {(this.format == null ? string.Empty : format(this.property))}");
+            if (_where != null)
+            {
+                sql.Append($" where {_where.ToString()}");
+            }
             return new UnityContainer() { Sql = sql.ToString(), CommandType = CommandType.Text, Parameters = this.GetParameter() };
         }
 
 
         protected abstract string BuildInsert(IEnumerable<IPropertyMap> propertys);
+        protected abstract string BuildUpdate(IEnumerable<IPropertyMap> propertys);
 
         protected abstract IEnumerable<KeyValuePair<string, object>> GetParameter();
     }

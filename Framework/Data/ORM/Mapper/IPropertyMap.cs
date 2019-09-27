@@ -23,6 +23,8 @@ namespace Framework.Data.ORM
         /// </summary>
         string ColumnName { get; }
 
+        string TableName { get; }
+
         /// <summary>
         /// 主键信息
         /// </summary>

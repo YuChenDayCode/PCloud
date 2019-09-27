@@ -11,6 +11,7 @@ namespace Framework.Data.ORM
     {
         public string TabelName { get; set; }
         public IEnumerable<IPropertyMap> PropertyMaps { get; }
+
         public EntityMapper()
         {
             this.PropertyMaps = this.GetPropertyMaps();
@@ -32,6 +33,6 @@ namespace Framework.Data.ORM
             property = new PropertyMap<T>(propertyInfo, tablename);
             return property;
         }
-
+       
     }
 }

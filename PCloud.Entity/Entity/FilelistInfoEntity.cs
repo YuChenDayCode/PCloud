@@ -12,13 +12,8 @@ namespace PCloud.Entity.Entity
         public int Id { get; set; }
         public string c_file_name { get; set; }
         [EntityMapper_Ignore]
-        public string c_file_name1 { get; set; }
-        [EntityMapper_Ignore]
-        public string c_file_name2 { get; set; }
-        [EntityMapper_Ignore]
-        public string c_file_name3 { get; set; }
-        [EntityMapper_Ignore]
-        public string c_file_name4 { get; set; }
+        public string c_file_test_ignore { get; set; }
+
         [EntityMapper_ColumnName("c_file_desc")]
         public string FileDesc { get; set; }
 

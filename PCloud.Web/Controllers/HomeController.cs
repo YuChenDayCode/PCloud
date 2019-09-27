@@ -17,8 +17,8 @@ namespace PCloud.Web.Controllers
         {
             int row;
             var mysql = new MysqlContainer();
-            var model = new FilelistInfoEntity() { Id = 2, c_file_name = "admin2", c_file_name1 = "filetype", c_file_name2 = "11", c_file_name3 = "22", c_file_name4 = "33",  FileDesc = "123123123", c_file_upload_number = 123123 };
-            IContainer sql = new MysqlConstructor<FilelistInfoEntity>().Insert(model).Build();
+            var model = new FilelistInfoEntity() { c_file_name = "aaa", FileDesc = "ccc", c_file_upload_number = 222 };
+            IContainer sql = new MysqlConstructor<FilelistInfoEntity>().Update(model, new string[] { nameof(FilelistInfoEntity.c_file_name) }).where(t => t.Id == 7).Build();
             mysql.ExecuteNonQuery(sql, out row);
 
             //MySqlConnection conn = (MySqlConnection)new MySqlDbConnect().GetIDbConnection();
