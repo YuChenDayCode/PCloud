@@ -1,12 +1,13 @@
-﻿using Framework.Data.ORM;
+﻿using Myn.Data.ORM;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Myn;
 
-namespace Framework.Data.ORM
+namespace Myn.Data.ORM
 {
     public enum DMLType
     {
@@ -41,6 +42,16 @@ namespace Framework.Data.ORM
             this.format = new Func<IEnumerable<IPropertyMap>, string>(BuildInsert);
             return this;
         }
+        public Constructor<T> Insert_Return_Id(T entity)
+        {
+            _DMLType = DMLType.Insert;
+            this.entity = entity;
+            this.property = from t in this.entitymap.PropertyMaps
+                            where t.PrimaryKey == null && t.Ignore == false
+                            select t;
+            this.format = new Func<IEnumerable<IPropertyMap>, string>(BuildInsert_Return_Id);
+            return this;
+        }
         public Constructor<T> Update(T entity)
         {
             _DMLType = DMLType.Update;
@@ -51,7 +62,7 @@ namespace Framework.Data.ORM
             this.format = new Func<IEnumerable<IPropertyMap>, string>(BuildUpdate);
             return this;
         }
-        public Constructor<T> Update(T entity,params string[] arrs)
+        public Constructor<T> Update(T entity, params string[] arrs)
         {
             _DMLType = DMLType.Update;
             var partmap = from t in this.entitymap.PropertyMaps where arrs.Contains(t.Name) select t;
@@ -63,30 +74,50 @@ namespace Framework.Data.ORM
             return this;
         }
 
+        public Constructor<T> Delete(T entity)
+        {
+            _DMLType = DMLType.Delete;
+            this.entity = entity;
+            this.property = from t in this.entitymap.PropertyMaps
+                            where t.PrimaryKey == null && t.Ignore == false
+                            select t;
+            this.format = null;
+            return this;
+        }
+
         public Constructor<T> where(Expression<Func<T, object>> expressions)
         {
             _where = Where.Parse(expressions, this.entitymap.PropertyMaps);
             return this;
         }
-       
 
         /// <summary>
         /// 构造语句
         /// </summary>
         /// <returns></returns>
-        public IContainer Build()
+        public ISqlDocker Build()
         {
             var sql = new StringBuilder();
-            sql.Append($"{this._DMLType} {this.entitymap.TabelName} {(this.format == null ? string.Empty : format(this.property))}");
+            sql.Append(this._DMLType.ToString());
+            sql.Append(this._DMLType == DMLType.Delete ? " from " : string.Empty);
+            sql.Append(this.entitymap.TabelName.Fill());
+            sql.Append(this.format == null ? string.Empty : format(this.property));
             if (_where != null)
             {
                 sql.Append($" where {_where.ToString()}");
             }
-            return new UnityContainer() { Sql = sql.ToString(), CommandType = CommandType.Text, Parameters = this.GetParameter() };
+            return new SqlDocker() { Sql = sql.ToString(), CommandType = CommandType.Text, Parameters = this.GetParameter() };
+        }
+
+        ISqlDocker CreateCustomerSql(string sql, CommandType commandType, IEnumerable<KeyValuePair<string, object>> para)
+        {
+            return new SqlDocker() { Sql = sql, CommandType = commandType, Parameters = para };
         }
 
 
         protected abstract string BuildInsert(IEnumerable<IPropertyMap> propertys);
+        protected abstract string BuildInsert_Return_Id(IEnumerable<IPropertyMap> propertys);
+
         protected abstract string BuildUpdate(IEnumerable<IPropertyMap> propertys);
 
         protected abstract IEnumerable<KeyValuePair<string, object>> GetParameter();

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using Framework.Data.ORM;
+using Myn.Data.ORM;
 
-namespace Framework.Data.ORM
+namespace Myn.Data.ORM
 {
     public class PropertyMap<T> : IPropertyMap
     {
@@ -52,6 +52,11 @@ namespace Framework.Data.ORM
         public string GetMapperColumnName(string split = ".")
         {
             return $"{this.TableName}{split}{this.ColumnName}";
+        }
+
+        public string GetQueryField()
+        {
+            return $"{this.GetMapperColumnName()} as {this.GetMapperColumnName("_")}";
         }
     }
 }

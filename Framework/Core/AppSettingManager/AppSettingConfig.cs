@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Framework.Core.AppSettingManager
+namespace Myn.Core.AppSettingManager
 {
     public class AppSettingConfig
     {

@@ -1,11 +1,11 @@
-﻿using Framework.Data.ORM;
+﻿using Myn.Data.ORM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Framework.Data.ORM
+namespace Myn.Data.ORM
 {
     public class EntityMapper<T>
     {

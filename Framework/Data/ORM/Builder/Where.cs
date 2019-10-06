@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace Framework.Data.ORM
+namespace Myn.Data.ORM
 {
     public class Where : ResolveExpressions
     {
@@ -36,11 +36,11 @@ namespace Framework.Data.ORM
         {
             if (Left == null || Right == null)
             {
-                return $"{property.TableName}.{Name} { Operator } { property.GetParamName()}{Index}";
+                return $" {property.TableName}.{Name} { Operator } { property.GetParamName()}{Index}";
             }
             else
             {
-                return $"({Left.ToString()} { this.SpliceWay.ToString()} {Right.ToString()})";
+                return $" ({Left.ToString()} { this.SpliceWay.ToString()} {Right.ToString()})";
             }
         }
 

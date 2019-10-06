@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 
-namespace Framework.Data.ORM
+namespace Myn.Data.ORM
 {
     public class IndexContent
     {

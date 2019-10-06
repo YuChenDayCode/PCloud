@@ -1,5 +1,5 @@
-﻿using Framework.Core.AppSettingManager;
-using Framework.Data.ORM;
+﻿using Myn.Core.AppSettingManager;
+using Myn.Data.ORM;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Concurrent;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Framework.Data.ORM
+namespace Myn.Data.ORM
 {
     public class MySqlDbConnectionConfig : ConfigManager<MySqlDbConntionConfigureItem>
     {

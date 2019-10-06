@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Framework.Data.ORM
+namespace Myn.Data.ORM
 {
     /// <summary>
     /// Mysql sql 构造
@@ -17,6 +17,13 @@ namespace Framework.Data.ORM
             var kv = (from t in propertys where t.PropertyInfo.GetValue(this.entity) != null select new KeyValuePair<string, string>(t.ColumnName, t.GetParamName())).ToDictionary(k => $"`{k.Key}`", v => v.Value);
             return $" ({string.Join(",", kv.Keys)}) values ({string.Join(",", kv.Values)})";
         }
+        protected override string BuildInsert_Return_Id(IEnumerable<IPropertyMap> propertys)
+        {
+            string insert_sql = BuildInsert(propertys);
+            return $"{insert_sql};SELECT LAST_INSERT_ID();";
+        }
+
+
         protected override string BuildUpdate(IEnumerable<IPropertyMap> propertys)
         {
             var u = from t in propertys select $"`{t.ColumnName}`= {t.GetParamName()}";

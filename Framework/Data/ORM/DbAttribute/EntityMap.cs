@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Framework.Data.ORM
+namespace Myn.Data.ORM
 {
     /// <summary>
     /// 映射数据库表名

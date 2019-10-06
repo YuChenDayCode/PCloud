@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace Framework.Data.ORM
+namespace Myn.Data.ORM
 {
-    public class MySqlDbConnect : IDBConnect
+    public class MySqlDbConnect : IDbConnect
     {
         private MySqlConnection _con;
         public IDbConnection GetIDbConnection()

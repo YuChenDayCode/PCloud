@@ -1,4 +1,4 @@
-﻿using Framework.Data.ORM;
+﻿using Myn.Data.ORM;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +19,10 @@ namespace PCloud.Entity.Entity
 
         public int c_file_upload_number { get; set; }
 
+        public DateTime c_file_create_time { get; set; }
+        public DateTime c_file_upload_time { get; set; }
+
+        public bool c_file_isdel { get; set; }
 
     }
 }

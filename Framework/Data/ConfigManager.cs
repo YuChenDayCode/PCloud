@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Framework.Data.ORM
+namespace Myn.Data
 {
     public class ConfigManager<T> where T : class, new()
     {

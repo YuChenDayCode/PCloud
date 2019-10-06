@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using PCloud.Web.Models;
 using MySql.Data.MySqlClient;
 using PCloud.Entity.Entity;
-using Framework.Data.ORM;
+using Myn.Data.ORM;
 
 namespace PCloud.Web.Controllers
 {
@@ -16,12 +16,46 @@ namespace PCloud.Web.Controllers
         public IActionResult Index()
         {
             int row;
-            var mysql = new MysqlContainer();
-            var model = new FilelistInfoEntity() { c_file_name = "aaa", FileDesc = "ccc", c_file_upload_number = 222 };
-            IContainer sql = new MysqlConstructor<FilelistInfoEntity>().Update(model, new string[] { nameof(FilelistInfoEntity.c_file_name) }).where(t => t.Id == 7).Build();
-            mysql.ExecuteNonQuery(sql, out row);
 
-            //MySqlConnection conn = (MySqlConnection)new MySqlDbConnect().GetIDbConnection();
+            IDbProvider<FilelistInfoEntity> db = new MysqlProvider<FilelistInfoEntity>();
+            var a = db.Get(t => t.Id == 6);
+
+            List<FilelistInfoEntity> list = new List<FilelistInfoEntity>();
+            for (int i = 0; i < 5; i++)
+            {
+
+            }
+            var model = new FilelistInfoEntity()
+            {
+                c_file_name = "Everything",
+                FileDesc = "查找文件快得一批啊",
+                c_file_upload_number = 210,
+                c_file_isdel = false,
+                c_file_create_time = DateTime.Now,
+                c_file_upload_time = DateTime.Now
+            };
+            list.Add(model);
+            int id;
+            db.Insert_Return_Id(model, out id);
+
+            /*
+            MysqlQuery<FilelistInfoEntity> query = new MysqlQuery<FilelistInfoEntity>();
+            ISqlDocker docker = query.Count().where(t => t.Id == 6).Build();
+            var model = new FilelistInfoEntity()
+            {
+                c_file_name = "cesa",
+                FileDesc = "info",
+                c_file_upload_number = 111,
+                c_file_isdel = true,
+                c_file_create_time = DateTime.Now,
+                c_file_upload_time = DateTime.Now
+            };
+
+            ISqlDocker sql =  new MysqlConstructor<FilelistInfoEntity>().Insert(model).Build();
+            mysql.ExecuteNonQuery(sql, out row);
+            */
+
+
             return View();
         }
 

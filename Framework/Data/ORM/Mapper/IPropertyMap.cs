@@ -1,10 +1,10 @@
-﻿using Framework.Data.ORM;
+﻿using Myn.Data.ORM;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace Framework.Data.ORM
+namespace Myn.Data.ORM
 {
     public interface IPropertyMap
     {
@@ -32,5 +32,6 @@ namespace Framework.Data.ORM
 
         string GetParamName(string paramMark = "@");
         string GetMapperColumnName(string split = ".");
+        string GetQueryField();
     }
 }
