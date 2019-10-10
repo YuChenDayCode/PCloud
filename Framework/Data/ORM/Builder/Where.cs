@@ -9,6 +9,10 @@ namespace Myn.Data.ORM
     {
         readonly int _Index;
         public int Index => _Index;
+
+        readonly string __where;
+        public string _where => __where;
+
         public Where Left { get; set; }
         public Where Right { get; set; }
         public string Operator { get; set; }
@@ -19,6 +23,10 @@ namespace Myn.Data.ORM
         public IPropertyMap property { get; set; }
 
         public dynamic Value { get; set; }
+        public Where(string where)
+        {
+            __where = where;
+        }
         public Where(int index, IEnumerable<IPropertyMap> _propertymap)
         {
             _Index = index;
@@ -34,7 +42,11 @@ namespace Myn.Data.ORM
         }
         public override string ToString()
         {
-            if (Left == null || Right == null)
+            if (!string.IsNullOrEmpty(this._where))
+            {
+                return this._where;
+            }
+            else if (Left == null || Right == null)
             {
                 return $" {property.TableName}.{Name} { Operator } { property.GetParamName()}{Index}";
             }
@@ -46,7 +58,11 @@ namespace Myn.Data.ORM
 
         public void GetDictionary(Dictionary<string, object> dic)
         {
-            if (Left == null || Right == null)
+            if (!string.IsNullOrEmpty(this._where))
+            {
+                return;
+            }
+            else if (Left == null || Right == null)
             {
                 dic.Add($"{this.property.GetParamName()}{Index}", this.Value);
             }

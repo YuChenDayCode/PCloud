@@ -11,9 +11,9 @@ namespace Myn.Data.ORM
 {
     public enum DMLType
     {
-        Insert = 1,
-        Update = 2,
-        Delete = 3
+        INSERT = 1,
+        UPDATE = 2,
+        DELETE = 3
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ namespace Myn.Data.ORM
         }
         public Constructor<T> Insert(T entity)
         {
-            _DMLType = DMLType.Insert;
+            _DMLType = DMLType.INSERT;
             this.entity = entity;
             this.property = from t in this.entitymap.PropertyMaps
                             where t.PrimaryKey == null && t.Ignore == false
@@ -44,7 +44,7 @@ namespace Myn.Data.ORM
         }
         public Constructor<T> Insert_Return_Id(T entity)
         {
-            _DMLType = DMLType.Insert;
+            _DMLType = DMLType.INSERT;
             this.entity = entity;
             this.property = from t in this.entitymap.PropertyMaps
                             where t.PrimaryKey == null && t.Ignore == false
@@ -54,7 +54,7 @@ namespace Myn.Data.ORM
         }
         public Constructor<T> Update(T entity)
         {
-            _DMLType = DMLType.Update;
+            _DMLType = DMLType.UPDATE;
             this.entity = entity;
             this.property = from t in this.entitymap.PropertyMaps
                             where t.PrimaryKey == null && t.Ignore == false
@@ -64,7 +64,7 @@ namespace Myn.Data.ORM
         }
         public Constructor<T> Update(T entity, params string[] arrs)
         {
-            _DMLType = DMLType.Update;
+            _DMLType = DMLType.UPDATE;
             var partmap = from t in this.entitymap.PropertyMaps where arrs.Contains(t.Name) select t;
             this.entity = entity;
             this.property = from t in partmap
@@ -73,14 +73,24 @@ namespace Myn.Data.ORM
             this.format = new Func<IEnumerable<IPropertyMap>, string>(BuildUpdate);
             return this;
         }
-
-        public Constructor<T> Delete(T entity)
+        public Constructor<T> Delete()
         {
-            _DMLType = DMLType.Delete;
-            this.entity = entity;
-            this.property = from t in this.entitymap.PropertyMaps
-                            where t.PrimaryKey == null && t.Ignore == false
-                            select t;
+            _DMLType = DMLType.DELETE;
+            this.format = null;
+            return this;
+        }
+        public Constructor<T> Delete<K>(IEnumerable<K> pkvlues)
+        {
+            _DMLType = DMLType.DELETE;
+            string pkName = this.entitymap.PropertyMaps.First(m => m.PrimaryKey != null)?.Name;
+            if (typeof(K).Name == typeof(string).Name)
+            {
+                var pk = from t in pkvlues select $"'{t}'";
+                _where = new Where($"{pkName} in ({string.Join(",", pk)})");
+            }
+            if (typeof(K).Name == typeof(int).Name)
+                _where = new Where($"{pkName} in ({string.Join(",", pkvlues)})");
+
             this.format = null;
             return this;
         }
@@ -88,6 +98,11 @@ namespace Myn.Data.ORM
         public Constructor<T> where(Expression<Func<T, object>> expressions)
         {
             _where = Where.Parse(expressions, this.entitymap.PropertyMaps);
+            return this;
+        }
+        public Constructor<T> where(string where)
+        {
+            _where = new Where(where);
             return this;
         }
 
@@ -99,17 +114,17 @@ namespace Myn.Data.ORM
         {
             var sql = new StringBuilder();
             sql.Append(this._DMLType.ToString());
-            sql.Append(this._DMLType == DMLType.Delete ? " from " : string.Empty);
+            sql.Append(this._DMLType == DMLType.DELETE ? " FROM " : string.Empty);
             sql.Append(this.entitymap.TabelName.Fill());
             sql.Append(this.format == null ? string.Empty : format(this.property));
             if (_where != null)
             {
-                sql.Append($" where {_where.ToString()}");
+                sql.Append($" WHERE {_where.ToString()}");
             }
             return new SqlDocker() { Sql = sql.ToString(), CommandType = CommandType.Text, Parameters = this.GetParameter() };
         }
 
-        ISqlDocker CreateCustomerSql(string sql, CommandType commandType, IEnumerable<KeyValuePair<string, object>> para)
+        public ISqlDocker CreateCustomerSql(string sql, CommandType commandType = CommandType.Text, IEnumerable<KeyValuePair<string, object>> para = null)
         {
             return new SqlDocker() { Sql = sql, CommandType = commandType, Parameters = para };
         }

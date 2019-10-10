@@ -12,7 +12,7 @@ namespace Myn
         /// <param name="str">字符串</param>
         /// <param name="c">字符</param>
         /// <returns></returns>
-        public static string Fill(this string str, char c = ' ')
+        public static string Fill(this string str, string c = " ")
         {
             return $"{c}{str}{c}";
         }

@@ -15,7 +15,7 @@ namespace Myn.Data.ORM
         {
             //过滤了为null的数据
             var kv = (from t in propertys where t.PropertyInfo.GetValue(this.entity) != null select new KeyValuePair<string, string>(t.ColumnName, t.GetParamName())).ToDictionary(k => $"`{k.Key}`", v => v.Value);
-            return $" ({string.Join(",", kv.Keys)}) values ({string.Join(",", kv.Values)})";
+            return $" ({string.Join(",", kv.Keys)}) VALUES ({string.Join(",", kv.Values)})";
         }
         protected override string BuildInsert_Return_Id(IEnumerable<IPropertyMap> propertys)
         {
@@ -27,7 +27,7 @@ namespace Myn.Data.ORM
         protected override string BuildUpdate(IEnumerable<IPropertyMap> propertys)
         {
             var u = from t in propertys select $"`{t.ColumnName}`= {t.GetParamName()}";
-            return $" set {string.Join(",", u)} ";
+            return $" SET {string.Join(",", u)} ";
         }
 
         protected override IEnumerable<KeyValuePair<string, object>> GetParameter()

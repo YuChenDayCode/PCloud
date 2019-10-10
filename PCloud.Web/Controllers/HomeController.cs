@@ -18,27 +18,33 @@ namespace PCloud.Web.Controllers
             int row;
 
             IDbProvider<FilelistInfoEntity> db = new MysqlProvider<FilelistInfoEntity>();
-            var a = db.Get(t => t.Id == 6);
+            var a = db.GetListPage(t => t.Id > 10, 1, 19, out row, t => t.c_file_name, "DESC",t=>t.c_file_create_time);
+
 
             List<FilelistInfoEntity> list = new List<FilelistInfoEntity>();
-            for (int i = 0; i < 5; i++)
-            {
-
-            }
             var model = new FilelistInfoEntity()
             {
-                c_file_name = "Everything",
-                FileDesc = "查找文件快得一批啊",
+
+                c_file_name = "Everything11111111",
+                FileDesc = "查找文件快得一批啊啊啊啊啊",
                 c_file_upload_number = 210,
                 c_file_isdel = false,
                 c_file_create_time = DateTime.Now,
                 c_file_upload_time = DateTime.Now
             };
             list.Add(model);
+
+
+            // int rd = db.Delete(new int[] { 17, 18 });
+            //var aa = db.Update(model,t => t.Id == 10,new[] { nameof(FilelistInfoEntity.FileDesc) });
+            //var a = db.GetList(t=>t.FileDesc.Contains("%c%"));
+            // var a = db.Count(t => t.Id >= 19);
+
+            /*
             int id;
             db.Insert_Return_Id(model, out id);
 
-            /*
+            
             MysqlQuery<FilelistInfoEntity> query = new MysqlQuery<FilelistInfoEntity>();
             ISqlDocker docker = query.Count().where(t => t.Id == 6).Build();
             var model = new FilelistInfoEntity()

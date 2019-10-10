@@ -165,7 +165,6 @@ namespace Myn.Data.ORM
         private void GetConstantValue(ConstantExpression expr, Where item, string fieldName = null)
         {
 
-
             if (item != null)
             {
                 if (fieldName == null)
