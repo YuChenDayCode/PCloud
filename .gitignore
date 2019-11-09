@@ -2,3 +2,4 @@
 .vs
 bin/
 ConfigResource/
+appsettings.json

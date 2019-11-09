@@ -41,6 +41,10 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.17, )"
@@ -50,13 +54,31 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
+            },
+            "Qiniu": {
+              "target": "Package",
+              "version": "[7.3.1.1, )"
+            },
+            "ServiceStack.Redis": {
+              "target": "Package",
+              "version": "[5.7.0, )"
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

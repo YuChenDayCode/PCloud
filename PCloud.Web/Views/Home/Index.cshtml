@@ -2,43 +2,48 @@
     ViewData["Title"] = "Home Page";
 }
 
+@section Script{
+    <script type="text/javascript">
+        new Vue({
+            el: "#main",
+            data: {
+                list: [
+                    { "name": "屏幕截图", "desc": "icPick 是一款优秀的免费屏幕截图工具，汇集屏幕截取、取色器、调色板、放大镜、标尺、量角器、坐标轴、白板等功能于一身。 PicPick 支持的屏幕截图模式包括：全屏、活动窗口、滚动窗口、矩形区域、固定区域、手绘区域、重复", author: "雨辰", createtime: "2019-9-16 17:24:50" },
+                    { "name": "屏幕截图1", "desc": "icPick 是一款优秀的免费屏幕截图工具", author: "雨辰", createtime: "2019-9-16 17:24:50" },
+                    { "name": "屏幕截图2", "desc": "icPick 是一款优秀的免费屏幕截图工具", author: "雨辰", createtime: "2019-9-16 17:24:50" }
+                ]
+            },
+            methods: {
+                download: function () {
+                    $.get('/Home/GetUrl', {}, function (data) {
+                        console.log(data);
+                        location.href = "http://"+data;
+                    });
+                }
+            }
+        });
+
+    </script>
+}
+
 <div class="layui-row layui-col-space15">
     <div class="layui-col-md8">
         <div class="fly-panel" style="margin-bottom: 0;">
 
-            <ul class="fly-list">
-                <li>
-                    <a href="user/home.html" class="fly-pic">
-                        <img src="http://image.tnblog.net/two_7827c815e90740d88ce58411ed22df1e.jpeg" alt="贤心">
-                    </a>
-                    <h2>
-                        @*<a class="layui-badge">分享</a>*@
-                        <a href="detail.html">屏幕截图</a>
-                    </h2>
-                    <div class="fly-list-desc">
-                        icPick 是一款优秀的免费屏幕截图工具，
-                    </div>
+            <ul class="fly-list" id="main">
+                <li v-for="(item,index) in list">
+                    <a href="user/home.html" class="fly-pic"><img src="http://image.tnblog.net/two_7827c815e90740d88ce58411ed22df1e.jpeg" alt="贤心"></a>
+                    <h2><a href="detail.html">{{item.name}}</a></h2>
+                    <div class="fly-list-desc">{{item.desc}} </div>
                     <div class="fly-list-info">
-                        <a href="user/home.html" link="">
-                            <cite>雨辰</cite>
-                            <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
-                        </a>
-                        <span>2019-9-16 17:24:50</span>
-
+                        <a href="user/home.html" link=""><cite>{{item.author}}</cite></a>
+                        <span>{{item.createtime}}</span>
                         <span class="fly-list-kiss layui-hide-xs" title="获赞"><i class="iconfont icon-zan"></i> 60</span>
-                        <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
-                        <span class="fly-list-nums">
-                            <i class="iconfont icon-yulan1" title="浏览"></i> 66
-                        </span>
+                        <span class="fly-list-nums"><i class="iconfont icon-yulan1" title="浏览"></i> 66</span>
                     </div>
-                    <div class="fly-list-badge">
-                        @*<span class="layui-badge layui-bg-black">置顶</span>*@
-                        <!--<span class="layui-badge layui-bg-red">精帖</span>-->
-                    </div>
+                    <button class="layui-btn layui-btn-danger" @@click="download" id="LAY_signin">今日签到</button>
                 </li>
+
                 <li>
                     <a href="user/home.html" class="fly-pic">
                         <img src="http://image.tnblog.net/two_7827c815e90740d88ce58411ed22df1e.jpeg" alt="贤心">
@@ -54,201 +59,9 @@
                         <a href="user/home.html" link="">
                             <cite>雨辰</cite>
                             <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
-                        </a>
-                        <span>2019-9-16 17:24:50</span>
-
-                        <span class="fly-list-kiss layui-hide-xs" title="获赞"><i class="iconfont icon-zan"></i> 60</span>
-                        <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
-                        <span class="fly-list-nums">
-                            <i class="iconfont icon-yulan1" title="浏览"></i> 66
-                        </span>
-                    </div>
-                    <div class="fly-list-badge">
-                        @*<span class="layui-badge layui-bg-black">置顶</span>*@
-                        <!--<span class="layui-badge layui-bg-red">精帖</span>-->
-                    </div>
-                </li>
-                <li>
-                    <a href="user/home.html" class="fly-pic">
-                        <img src="http://image.tnblog.net/two_7827c815e90740d88ce58411ed22df1e.jpeg" alt="贤心">
-                    </a>
-                    <h2>
-                        @*<a class="layui-badge">分享</a>*@
-                        <a href="detail.html">基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版</a>
-                    </h2>
-                    <div class="fly-list-desc">
-                        icPick 是一款优秀的免费屏幕截图工具，汇集屏幕截取、取色器、调色板、放大镜、标尺、量角器、坐标轴、白板等功能于一身。 PicPick 支持的屏幕截图模式包括：全屏、活动窗口、滚动窗口、矩形区域、固定区域、手绘区域、重复上次截取等，这应该满足绝大部分需求了。 截图后默认在 PicPick 编辑器中打开，在此编辑器中可以设置图片效果、添加标注信息，然后保存为
-                    </div>
-                    <div class="fly-list-info">
-                        <a href="user/home.html" link="">
-                            <cite>雨辰</cite>
-                            <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
-                        </a>
-                        <span>2019-9-16 17:24:50</span>
-
-                        <span class="fly-list-kiss layui-hide-xs" title="获赞"><i class="iconfont icon-zan"></i> 60</span>
-                        <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
-                        <span class="fly-list-nums">
-                            <i class="iconfont icon-yulan1" title="浏览"></i> 66
-                        </span>
-                    </div>
-                    <div class="fly-list-badge">
-                        @*<span class="layui-badge layui-bg-black">置顶</span>*@
-                        <!--<span class="layui-badge layui-bg-red">精帖</span>-->
-                    </div>
-                </li>
-                <li>
-                    <a href="user/home.html" class="fly-pic">
-                        <img src="http://image.tnblog.net/two_7827c815e90740d88ce58411ed22df1e.jpeg" alt="贤心">
-                    </a>
-                    <h2>
-                        @*<a class="layui-badge">分享</a>*@
-                        <a href="detail.html">基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版</a>
-                    </h2>
-                    <div class="fly-list-desc">
-                        icPick 是一款优秀的免费屏幕截图工具，汇集屏幕截取、取色器、调色板、放大镜、标尺、量角器、坐标轴、白板等功能于一身。 PicPick 支持的屏幕截图模式包括：全屏、活动窗口、滚动窗口、矩形区域、固定区域、手绘区域、重复上次截取等，这应该满足绝大部分需求了。 截图后默认在 PicPick 编辑器中打开，在此编辑器中可以设置图片效果、添加标注信息，然后保存为
-                    </div>
-                    <div class="fly-list-info">
-                        <a href="user/home.html" link="">
-                            <cite>雨辰</cite>
-                            <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
-                        </a>
-                        <span>2019-9-16 17:24:50</span>
-
-                        <span class="fly-list-kiss layui-hide-xs" title="获赞"><i class="iconfont icon-zan"></i> 60</span>
-                        <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
-                        <span class="fly-list-nums">
-                            <i class="iconfont icon-yulan1" title="浏览"></i> 66
-                        </span>
-                    </div>
-                    <div class="fly-list-badge">
-                        @*<span class="layui-badge layui-bg-black">置顶</span>*@
-                        <!--<span class="layui-badge layui-bg-red">精帖</span>-->
-                    </div>
-                </li>
-                <li>
-                    <a href="user/home.html" class="fly-pic">
-                        <img src="http://image.tnblog.net/two_7827c815e90740d88ce58411ed22df1e.jpeg" alt="贤心">
-                    </a>
-                    <h2>
-                        @*<a class="layui-badge">分享</a>*@
-                        <a href="detail.html">基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版</a>
-                    </h2>
-                    <div class="fly-list-desc">
-                        icPick 是一款优秀的免费屏幕截图工具，汇集屏幕截取、取色器、调色板、放大镜、标尺、量角器、坐标轴、白板等功能于一身。 PicPick 支持的屏幕截图模式包括：全屏、活动窗口、滚动窗口、矩形区域、固定区域、手绘区域、重复上次截取等，这应该满足绝大部分需求了。 截图后默认在 PicPick 编辑器中打开，在此编辑器中可以设置图片效果、添加标注信息，然后保存为
-                    </div>
-                    <div class="fly-list-info">
-                        <a href="user/home.html" link="">
-                            <cite>雨辰</cite>
-                            <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
-                        </a>
-                        <span>2019-9-16 17:24:50</span>
-
-                        <span class="fly-list-kiss layui-hide-xs" title="获赞"><i class="iconfont icon-zan"></i> 60</span>
-                        <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
-                        <span class="fly-list-nums">
-                            <i class="iconfont icon-yulan1" title="浏览"></i> 66
-                        </span>
-                    </div>
-                    <div class="fly-list-badge">
-                        @*<span class="layui-badge layui-bg-black">置顶</span>*@
-                        <!--<span class="layui-badge layui-bg-red">精帖</span>-->
-                    </div>
-                </li>
-                <li>
-                    <a href="user/home.html" class="fly-pic">
-                        <img src="http://image.tnblog.net/two_7827c815e90740d88ce58411ed22df1e.jpeg" alt="贤心">
-                    </a>
-                    <h2>
-                        @*<a class="layui-badge">分享</a>*@
-                        <a href="detail.html">基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版</a>
-                    </h2>
-                    <div class="fly-list-desc">
-                        icPick 是一款优秀的免费屏幕截图工具，汇集屏幕截取、取色器、调色板、放大镜、标尺、量角器、坐标轴、白板等功能于一身。 PicPick 支持的屏幕截图模式包括：全屏、活动窗口、滚动窗口、矩形区域、固定区域、手绘区域、重复上次截取等，这应该满足绝大部分需求了。 截图后默认在 PicPick 编辑器中打开，在此编辑器中可以设置图片效果、添加标注信息，然后保存为
-                    </div>
-                    <div class="fly-list-info">
-                        <a href="user/home.html" link="">
-                            <cite>雨辰</cite>
-                            <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
-                        </a>
-                        <span>2019-9-16 17:24:50</span>
-
-                        <span class="fly-list-kiss layui-hide-xs" title="获赞"><i class="iconfont icon-zan"></i> 60</span>
-                        <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
-                        <span class="fly-list-nums">
-                            <i class="iconfont icon-yulan1" title="浏览"></i> 66
-                        </span>
-                    </div>
-                    <div class="fly-list-badge">
-                        @*<span class="layui-badge layui-bg-black">置顶</span>*@
-                        <!--<span class="layui-badge layui-bg-red">精帖</span>-->
-                    </div>
-                </li>
-                <li>
-                    <a href="user/home.html" class="fly-pic">
-                        <img src="http://image.tnblog.net/two_7827c815e90740d88ce58411ed22df1e.jpeg" alt="贤心">
-                    </a>
-                    <h2>
-                        @*<a class="layui-badge">分享</a>*@
-                        <a href="detail.html">基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版</a>
-                    </h2>
-                    <div class="fly-list-desc">
-                        icPick 是一款优秀的免费屏幕截图工具，汇集屏幕截取、取色器、调色板、放大镜、标尺、量角器、坐标轴、白板等功能于一身。 PicPick 支持的屏幕截图模式包括：全屏、活动窗口、滚动窗口、矩形区域、固定区域、手绘区域、重复上次截取等，这应该满足绝大部分需求了。 截图后默认在 PicPick 编辑器中打开，在此编辑器中可以设置图片效果、添加标注信息，然后保存为
-                    </div>
-                    <div class="fly-list-info">
-                        <a href="user/home.html" link="">
-                            <cite>雨辰</cite>
-                            <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
-                        </a>
-                        <span>2019-9-16 17:24:50</span>
-
-                        <span class="fly-list-kiss layui-hide-xs" title="获赞"><i class="iconfont icon-zan"></i> 60</span>
-                        <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
-                        <span class="fly-list-nums">
-                            <i class="iconfont icon-yulan1" title="浏览"></i> 66
-                        </span>
-                    </div>
-                    <div class="fly-list-badge">
-                        @*<span class="layui-badge layui-bg-black">置顶</span>*@
-                        <!--<span class="layui-badge layui-bg-red">精帖</span>-->
-                    </div>
-                </li>
-                <li>
-                    <a href="user/home.html" class="fly-pic">
-                        <img src="http://image.tnblog.net/two_7827c815e90740d88ce58411ed22df1e.jpeg" alt="贤心">
-                    </a>
-                    <h2>
-                        @*<a class="layui-badge">分享</a>*@
-                        <a href="detail.html">基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版基于 layui 的极简社区页面模版</a>
-                    </h2>
-                    <div class="fly-list-desc">
-                        icPick 是一款优秀的免费屏幕截图工具，汇集屏幕截取、取色器、调色板、放大镜、标尺、量角器、坐标轴、白板等功能于一身。 PicPick 支持的屏幕截图模式包括：全屏、活动窗口、滚动窗口、矩形区域、固定区域、手绘区域、重复上次截取等，这应该满足绝大部分需求了。 截图后默认在 PicPick 编辑器中打开，在此编辑器中可以设置图片效果、添加标注信息，然后保存为
-                    </div>
-                    <div class="fly-list-info">
-                        <a href="user/home.html" link="">
-                            <cite>雨辰</cite>
-                            <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
+                            <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
+                            <i class="layui-badge fly-badge-vip">VIP3</i>
+                            -->
                         </a>
                         <span>2019-9-16 17:24:50</span>
 
@@ -357,3 +170,4 @@
 
     </div>
 </div>
+

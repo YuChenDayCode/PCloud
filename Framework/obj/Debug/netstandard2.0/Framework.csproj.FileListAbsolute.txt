@@ -1,12 +1,9 @@
 C:\Users\YuChen\source\repos\PCloud\Framework\bin\Debug\netstandard2.0\Framework.deps.json
 C:\Users\YuChen\source\repos\PCloud\Framework\bin\Debug\netstandard2.0\Framework.dll
-C:\Users\YuChen\source\repos\PCloud\Framework\obj\Debug\netstandard2.0\Framework.csproj.CoreCompileInputs.cache
-C:\Users\YuChen\source\repos\PCloud\Framework\obj\Debug\netstandard2.0\Framework.AssemblyInfoInputs.cache
-C:\Users\YuChen\source\repos\PCloud\Framework\obj\Debug\netstandard2.0\Framework.AssemblyInfo.cs
 C:\Users\YuChen\source\repos\PCloud\Framework\bin\Debug\netstandard2.0\Framework.pdb
-C:\Users\YuChen\source\repos\PCloud\Framework\obj\Debug\netstandard2.0\Framework.dll
-C:\Users\YuChen\source\repos\PCloud\Framework\obj\Debug\netstandard2.0\Framework.pdb
 C:\Users\YuChen\source\repos\PCloud\Framework\bin\Debug\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\YuChen\source\repos\PCloud\Framework\bin\Debug\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.xml
-C:\Users\YuChen\source\repos\PCloud\Framework\obj\Debug\netstandard2.0\Framework.csprojAssemblyReference.cache
 C:\Users\YuChen\source\repos\PCloud\Framework\obj\Debug\netstandard2.0\Framework.csproj.CopyComplete
+C:\Users\YuChen\source\repos\PCloud\Framework\obj\Debug\netstandard2.0\Framework.dll
+C:\Users\YuChen\source\repos\PCloud\Framework\obj\Debug\netstandard2.0\Framework.pdb
+C:\Users\YuChen\source\repos\PCloud\Framework\obj\Debug\netstandard2.0\Framework.csprojAssemblyReference.cache

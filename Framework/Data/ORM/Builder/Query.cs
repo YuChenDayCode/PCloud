@@ -13,7 +13,6 @@ namespace Myn.Data.ORM
         protected IEnumerable<IPropertyMap> propertyMaps;
         protected Where _where;
         protected SqlCount _sqlCount;
-        protected SqlSort _sqlSort;
         protected SqlPaging _sqlPaging;
 
         public abstract Query<T> Top(int num);
@@ -41,20 +40,8 @@ namespace Myn.Data.ORM
         }
     }
 
-
-
-    public class SqlSort
-    {
-        public string SortField { get; set; }
-        public SortWay SortWay { get; set; }
-
-    }
-
     public class SqlPaging
     {
-        //public int PageIndex { get; set; }
-        //public int PageSize { get; set; }
-        //public string SortField { get; set; }
         readonly string _Sql;
         public string PagingSql => _Sql;
         public SqlPaging(string _pagingSql)

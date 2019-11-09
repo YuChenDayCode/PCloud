@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Myn.ThirdUtil.Qiniu;
+using Myn.Data.ORM;
 
 namespace PCloud.Web
 {
@@ -33,9 +35,11 @@ namespace PCloud.Web
             });
 
 
+            services.AddQiniu();
+            services.Addorm();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-           // services.Configure<>();
+            // services.Configure<>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
