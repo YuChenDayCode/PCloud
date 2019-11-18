@@ -8975,7 +8975,7 @@
         this.$el.appendChild(clone);
         var info = getTransitionInfo(clone);
         this.$el.removeChild(clone);
-        return (this._hasMove = info.hasTransform)
+            return (this._hasMove = info.hasTransform);
       }
     }
   };
@@ -9035,7 +9035,7 @@
     hydrating
   ) {
     el = el && inBrowser ? query(el) : undefined;
-    return mountComponent(this, el, hydrating)
+      return mountComponent(this, el, hydrating);
   };
 
   // devtools global hook
@@ -9046,20 +9046,20 @@
         if (devtools) {
           devtools.emit('init', Vue);
         } else {
-          console[console.info ? 'info' : 'log'](
-            'Download the Vue Devtools extension for a better development experience:\n' +
-            'https://github.com/vuejs/vue-devtools'
-          );
+          //console[console.info ? 'info' : 'log'](
+          //  'Download the Vue Devtools extension for a better development experience:\n' +
+          //  'https://github.com/vuejs/vue-devtools'
+          //);
         }
       }
       if (config.productionTip !== false &&
         typeof console !== 'undefined'
       ) {
-        console[console.info ? 'info' : 'log'](
-          "You are running Vue in development mode.\n" +
-          "Make sure to turn on production mode when deploying for production.\n" +
-          "See more tips at https://vuejs.org/guide/deployment.html"
-        );
+        //console[console.info ? 'info' : 'log'](
+        //  "You are running Vue in development mode.\n" +
+        //  "Make sure to turn on production mode when deploying for production.\n" +
+        //  "See more tips at https://vuejs.org/guide/deployment.html"
+        //);
       }
     }, 0);
   }
@@ -9072,7 +9072,7 @@
   var buildRegex = cached(function (delimiters) {
     var open = delimiters[0].replace(regexEscapeRE, '\\$&');
     var close = delimiters[1].replace(regexEscapeRE, '\\$&');
-    return new RegExp(open + '((?:.|\\n)+?)' + close, 'g')
+      return new RegExp(open + '((?:.|\\n)+?)' + close, 'g');
   });
 
 
@@ -9146,7 +9146,7 @@
     if (el.classBinding) {
       data += "class:" + (el.classBinding) + ",";
     }
-    return data
+      return data;
   }
 
   var klass$1 = {
@@ -9191,7 +9191,7 @@
     if (el.styleBinding) {
       data += "style:(" + (el.styleBinding) + "),";
     }
-    return data
+      return data;
   }
 
   var style$1 = {
@@ -9208,7 +9208,7 @@
     decode: function decode (html) {
       decoder = decoder || document.createElement('div');
       decoder.innerHTML = html;
-      return decoder.textContent
+          return decoder.textContent;
     }
   };
 
@@ -9299,7 +9299,7 @@
                 options.comment(html.substring(4, commentEnd), index, index + commentEnd + 3);
               }
               advance(commentEnd + 3);
-              continue
+                continue;
             }
           }
 
@@ -9309,7 +9309,7 @@
 
             if (conditionalEnd >= 0) {
               advance(conditionalEnd + 2);
-              continue
+                continue;
             }
           }
 
@@ -9317,7 +9317,7 @@
           var doctypeMatch = html.match(doctype);
           if (doctypeMatch) {
             advance(doctypeMatch[0].length);
-            continue
+              continue;
           }
 
           // End tag:
@@ -9326,7 +9326,7 @@
             var curIndex = index;
             advance(endTagMatch[0].length);
             parseEndTag(endTagMatch[1], curIndex, index);
-            continue
+              continue;
           }
 
           // Start tag:
@@ -9336,7 +9336,7 @@
             if (shouldIgnoreFirstNewline(startTagMatch.tagName, html)) {
               advance(1);
             }
-            continue
+              continue;
           }
         }
 
@@ -9351,7 +9351,7 @@
           ) {
             // < in plain text, be forgiving and treat it as text
             next = rest.indexOf('<', 1);
-            if (next < 0) { break }
+              if (next < 0) { break; }
             textEnd += next;
             rest = html.slice(textEnd);
           }
@@ -9386,7 +9386,7 @@
           if (options.chars) {
             options.chars(text);
           }
-          return ''
+            return '';
         });
         index += html.length - rest$1.length;
         html = rest$1;
@@ -9398,7 +9398,7 @@
         if (!stack.length && options.warn) {
           options.warn(("Mal-formatted tag at end of template: \"" + html + "\""), { start: index + html.length });
         }
-        break
+          break;
       }
     }
 
@@ -9430,7 +9430,7 @@
           match.unarySlash = end[1];
           advance(end[0].length);
           match.end = index;
-          return match
+            return match;
         }
       }
     }
@@ -9488,7 +9488,7 @@
         lowerCasedTagName = tagName.toLowerCase();
         for (pos = stack.length - 1; pos >= 0; pos--) {
           if (stack[pos].lowerCasedTag === lowerCasedTagName) {
-            break
+              break;
           }
         }
       } else {
@@ -9570,15 +9570,15 @@
     attrs,
     parent
   ) {
-    return {
-      type: 1,
-      tag: tag,
-      attrsList: attrs,
-      attrsMap: makeAttrsMap(attrs),
-      rawAttrsMap: {},
-      parent: parent,
-      children: []
-    }
+      return {
+          type: 1,
+          tag: tag,
+          attrsList: attrs,
+          attrsMap: makeAttrsMap(attrs),
+          rawAttrsMap: {},
+          parent: parent,
+          children: []
+      };
   }
 
   /**

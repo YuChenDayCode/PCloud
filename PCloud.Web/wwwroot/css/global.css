@@ -505,6 +505,19 @@ body .fly-user-main{position: relative; min-height: 600px;}
 .fly-none p{margin-top: 50px; padding: 0 15px; font-size: 20px; color: #999; font-weight: 300;}
 .fly-list-one .fly-none{min-height: 70px;}
 
+  /* 文件框 */
+.inputfile {width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;    }
+    .inputfile + label {max-width: 70%;font-size: 1.05rem;font-weight: 600;text-overflow: ellipsis;white-space: nowrap;cursor: pointer;display: inline-block;overflow: hidden;padding: 0 1.15rem;color: #f1e5e6;background-color: #d3394c;}
+.no-js .inputfile + label {display: none;}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {outline: 1px dotted #000;outline: -webkit-focus-ring-color auto 5px;}
+.inputfile + label svg {width: 1em;height: 1em;vertical-align: middle;fill: currentColor;margin-top: -0.25em;margin-right: 0.25em;}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover { background-color: #FFB800;}
+
 
 @media screen and (max-width: 768px) {
 	.fly-main{width: 100%;}

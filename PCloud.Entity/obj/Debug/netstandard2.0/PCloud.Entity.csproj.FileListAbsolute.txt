@@ -1,5 +1,3 @@
-C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\obj\Debug\netstandard2.0\PCloud.Entity.AssemblyInfoInputs.cache
-C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\obj\Debug\netstandard2.0\PCloud.Entity.AssemblyInfo.cs
 C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\bin\Debug\netstandard2.0\PCloud.Entity.deps.json
 C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\bin\Debug\netstandard2.0\PCloud.Entity.dll
 C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\bin\Debug\netstandard2.0\PCloud.Entity.pdb
@@ -8,6 +6,8 @@ C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\bin\Debug\netstandard2.0\Micro
 C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\bin\Debug\netstandard2.0\Framework.pdb
 C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\bin\Debug\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.xml
 C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\obj\Debug\netstandard2.0\PCloud.Entity.csprojAssemblyReference.cache
+C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\obj\Debug\netstandard2.0\PCloud.Entity.AssemblyInfoInputs.cache
+C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\obj\Debug\netstandard2.0\PCloud.Entity.AssemblyInfo.cs
 C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\obj\Debug\netstandard2.0\PCloud.Entity.csproj.CopyComplete
 C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\obj\Debug\netstandard2.0\PCloud.Entity.dll
 C:\Users\YuChen\source\repos\PCloud\PCloud.Entity\obj\Debug\netstandard2.0\PCloud.Entity.pdb

@@ -19,25 +19,25 @@ namespace PCloud.Web.Controllers
 
         public HomeController(IQiniu _qiniu, IDbProvider<FilelistInfoEntity> _dbProvider)
         {
-            _qiniu = qiniu;
+            qiniu = _qiniu;
             dbProvider = _dbProvider;
         }
         public IActionResult Index()
         {
 
             #region qiniu
-            /*string file = "D:\\geek.exe";
-            var aa = qiniu.UploadFile(file, "yuchen-space");
-            string r = qiniu.CreatePrivateUrl("geek.exe"); */
+             string file = "D:\\geek.exe";
+             var aa = qiniu.UploadFile(file, "yuchen-space");
+            //string r = qiniu.CreatePrivateUrl("geek.exe"); 
             #endregion
 
 
             #region orm test
-            int row;
+            /* int row;
               // IDbProvider<FilelistInfoEntity> db = new MysqlProvider<FilelistInfoEntity>();
                var a = dbProvider.GetListPage(t => t.Id > 10, 1, 19, out row, t => t.c_file_name, "DESC");
 
-                /* var a = db.GetListPage(t => t.Id > 10, 1, 19, out row, t => t.c_file_name, "DESC", t => t.c_file_create_time,"ASC");
+                var a = db.GetListPage(t => t.Id > 10, 1, 19, out row, t => t.c_file_name, "DESC", t => t.c_file_create_time,"ASC");
 
                             List<FilelistInfoEntity> list = new List<FilelistInfoEntity>();
                             var model = new FilelistInfoEntity()

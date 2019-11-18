@@ -1,0 +1,11 @@
+C:\Users\YuChen\source\repos\PCloud\PCloud.Framework\bin\Release\netstandard2.0\ConfigResource\mysqlconfig.xml
+C:\Users\YuChen\source\repos\PCloud\PCloud.Framework\bin\Release\netstandard2.0\PCloud.Framework.deps.json
+C:\Users\YuChen\source\repos\PCloud\PCloud.Framework\bin\Release\netstandard2.0\PCloud.Framework.dll
+C:\Users\YuChen\source\repos\PCloud\PCloud.Framework\bin\Release\netstandard2.0\PCloud.Framework.pdb
+C:\Users\YuChen\source\repos\PCloud\PCloud.Framework\obj\Release\netstandard2.0\PCloud.Framework.csprojAssemblyReference.cache
+C:\Users\YuChen\source\repos\PCloud\PCloud.Framework\obj\Release\netstandard2.0\PCloud.Framework.Properties.Resources.resources
+C:\Users\YuChen\source\repos\PCloud\PCloud.Framework\obj\Release\netstandard2.0\PCloud.Framework.csproj.GenerateResource.cache
+C:\Users\YuChen\source\repos\PCloud\PCloud.Framework\obj\Release\netstandard2.0\PCloud.Framework.AssemblyInfoInputs.cache
+C:\Users\YuChen\source\repos\PCloud\PCloud.Framework\obj\Release\netstandard2.0\PCloud.Framework.AssemblyInfo.cs
+C:\Users\YuChen\source\repos\PCloud\PCloud.Framework\obj\Release\netstandard2.0\PCloud.Framework.dll
+C:\Users\YuChen\source\repos\PCloud\PCloud.Framework\obj\Release\netstandard2.0\PCloud.Framework.pdb
