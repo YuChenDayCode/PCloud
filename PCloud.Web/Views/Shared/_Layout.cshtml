@@ -5,9 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PCloud.We1b</title>
 
+    <style>
+        .pr-container {
+            position: absolute;
+            top: 80%;
+            width: 100%;
+            height: 5px;
+            border-radius: 5px;
+        }
 
+        #progress {
+            position: inherit;
+            height: 5px;
+            background-color: #28e470;
+            display: inline-block;
+            border-radius: 5px;
+        }
+    </style>
     <link rel="stylesheet" href="~/lib/layui/css/layui.css" />
     <link href="~/css/global.css" rel="stylesheet" />
+
 </head>
 <body>
     <div class="fly-header fly-panel fly-column">
@@ -20,14 +37,16 @@
                 <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
                 <!-- 用户登入后显示 -->
             </ul>
-            <div class="fly-column-right layui-hide-xs">
-                <span class="fly-search"><i class="layui-icon"></i></span>
-                <div style="display:inline-block;float:right;">
-                    <input type="file" class="inputfile inputfile-1" id="file-upload" />
-                    <label for="file-upload">
-                        <svg width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" /></svg>
-                        <span>选择文件&hellip;</span>
-                    </label>
+            <div class="fly-column-right layui-hide-xs" style="background-color:brown">
+                @*<span class="fly-search"><i class="layui-icon"></i></span>*@
+
+                <input type="file" class="inputfile inputfile-1" id="file-upload" />
+                <label for="file-upload">
+                    <svg width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" /></svg>
+                    <span>选择文件</span>
+                </label>
+                <div class='pr-container'>
+                    <span id="progress"></span>
                 </div>
             </div>
         </div>
@@ -43,7 +62,7 @@
                         下载/总量
                     </div>
                     <div class="fly-panel-main">
-                        <a href="" target="_blank" class="fly-zanzhu" style="background-color: #fda70b;font-size:40px; ">100/1000</a>
+                        <a href="" target="_blank" class="fly-zanzhu" style="/*background-color: #3498db;*/font-size:40px; ">100/1000</a>
                     </div>
                 </div>
 
