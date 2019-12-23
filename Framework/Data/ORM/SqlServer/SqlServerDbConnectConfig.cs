@@ -1,4 +1,5 @@
-﻿using Myn.Data.ORM;
+﻿using Myn.Core.AppSettingManager;
+using Myn.Data.ORM;
 using System;
 using System.Configuration;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Myn.Data.ORM
 {
     public class SqlServerDbConnectConfig : ConfigManager<SqlServerDbConntionConfigureItem>
     {
-        static SqlServerDbConnectConfig  sqlServerDbConnectConfig;
+        static SqlServerDbConnectConfig sqlServerDbConnectConfig;
         readonly static object obj = new object();
         private SqlServerDbConnectConfig() { }
         public static string GetSqlDbConntionConfigure()
@@ -26,8 +27,7 @@ namespace Myn.Data.ORM
 
         public string LoadConfig()
         {
-            //"bin\\Debug\\netcoreapp2.2\\ConfigResource\\mysqlconfig.xml"
-            string configPath = $"{AppDomain.CurrentDomain.BaseDirectory}{ConfigurationManager.AppSettings["sqlconfigPath"]}";
+            string configPath = AppSettingConfig.GetAppSetting()["AppSetting:sqlconfigPath"];
             XDocument xDoc = this.LocalConfig(configPath);
             var sc = from t in xDoc.Root.Elements("sqlconntionitem")
                      select SqlServerDbConnectConfig.CreaterConfigureItem(t);

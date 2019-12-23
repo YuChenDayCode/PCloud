@@ -32,15 +32,15 @@ namespace PCloud.Web.Controllers
              //string r = qiniu.CreatePrivateUrl("geek.exe"); */
             #endregion
 
-            IDbProvider<TestEntity> db = new MysqlProvider<TestEntity>();
-            List<TestEntity> list = new List<TestEntity>();
+            IDbProvider<Test1Entity> db = new SqlServerProvider<Test1Entity>();
+            List<Test1Entity> list = new List<Test1Entity>();
             for (int i = 0; i < 5; i++)
             {
-                list.Add(new TestEntity { cont = i + " bbb" });
+                list.Add(new Test1Entity { test = i + " bbb"});
             }
-            
-           int ri =  db.Insert(list);
 
+            int ri = db.Insert(list);
+            var aa = db.All();
             #region orm test
             /*           IDbProvider<FilelistInfoEntity> db = new MysqlProvider<FilelistInfoEntity>();
                        var model = new FilelistInfoEntity()

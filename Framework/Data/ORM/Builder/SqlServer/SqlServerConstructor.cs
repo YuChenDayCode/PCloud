@@ -20,19 +20,22 @@ namespace Myn.Data.ORM
         protected override string BuildBatchInsert(IEnumerable<IPropertyMap> propertys)
         {
             StringBuilder batch = new StringBuilder();
+            batch.Append("begin ");
             int c = 0;
             foreach (var item in this.list)
             {
                 c++;
-                var kv = (from t in propertys where t.PropertyInfo.GetValue(item) != null 
+                var kv = (from t in propertys
+                          where t.PropertyInfo.GetValue(item) != null
                           select new KeyValuePair<string, string>(t.GetManyParamName(c.ToString()), t.Name)).ToDictionary(k => k.Key, v => v.Value);
+
                 batch.Append(this._DMLType.ToString());
                 batch.Append(this.entitymap.TabelName.Fill());
-                batch.Append($"({ string.Join(",", kv.Values)}) VALUES ({ string.Join(",", kv.Keys) })");
+                batch.Append($"({ string.Join(",", kv.Values)}) VALUES ({ string.Join(",", kv.Keys) })\n");
             }
+            batch.Append("end; ");
             string a = batch.ToString();
             return a;
-            //return $"({ string.Join(",", kv.Values)}) VALUES ({ string.Join(",", kv.Keys) })";
         }
         protected override string BuildInsert_Return_Id(IEnumerable<IPropertyMap> propertys)
         {
@@ -73,6 +76,23 @@ namespace Myn.Data.ORM
                     {
                         var value = item.PropertyInfo.GetValue(this.entity);
                         para.Add(item.GetParamName(), (value == null ? DBNull.Value : value));
+                    }
+                }
+            }
+            if (this.list?.Count() > 0)
+            {
+                int c = 0;
+                foreach (var entity in this.list)
+                {
+                    c++;
+                    foreach (var item in this.property)
+                    {
+                        string ParaName = item.GetManyParamName(c + "");
+                        if (!para.ContainsKey(ParaName))
+                        {
+                            var value = item.PropertyInfo.GetValue(entity);
+                            para.Add(ParaName, (value == null ? DBNull.Value : value));
+                        }
                     }
                 }
             }
