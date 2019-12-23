@@ -23,7 +23,9 @@ C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.We
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.Web.TagHelpers.input.cache
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.Web.TagHelpers.output.cache
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.Web.RazorCoreGenerate.cache
+C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\Razor\Views\FileOperate\UploadView.cshtml.g.cs
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Test.cshtml.g.cs
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
@@ -33,4 +35,3 @@ C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.We
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.Web.csproj.CopyComplete
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.Web.dll
 C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\PCloud.Web.pdb
-C:\Users\YuChen\source\repos\PCloud\PCloud.Web\obj\Debug\netcoreapp2.2\Razor\Views\FileOperate\FileUpload.cshtml.g.cs

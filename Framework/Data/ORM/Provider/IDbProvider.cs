@@ -60,6 +60,13 @@ namespace Myn.Data.ORM
         bool Insert(T entity);
 
         /// <summary>
+        /// 插入数据
+        /// </summary>
+        /// <param name="entity">实体数组</param>
+        /// <returns>是否成功</returns>
+        int Insert(IEnumerable<T> entity);
+
+        /// <summary>
         /// 插入数据并返回主键
         /// </summary>
         /// <param name="entity">实体</param>

@@ -22,9 +22,10 @@ namespace Myn.Data.ORM
     /// <typeparam name="T"></typeparam>
     public abstract class Constructor<T>
     {
-        readonly EntityMapper<T> entitymap;
-        private DMLType _DMLType;
+        protected readonly EntityMapper<T> entitymap;
+        protected DMLType _DMLType;
         protected T entity;
+        protected IEnumerable<T> list;
         protected IEnumerable<IPropertyMap> property;
         private Func<IEnumerable<IPropertyMap>, string> format;
         protected Where _where;
@@ -40,6 +41,16 @@ namespace Myn.Data.ORM
                             where t.PrimaryKey == null && t.Ignore == false
                             select t;
             this.format = new Func<IEnumerable<IPropertyMap>, string>(BuildInsert);
+            return this;
+        }
+        public Constructor<T> Insert(IEnumerable<T> list)
+        {
+            _DMLType = DMLType.INSERT;
+            this.list = list;
+            this.property = from t in this.entitymap.PropertyMaps
+                            where t.PrimaryKey == null && t.Ignore == false
+                            select t;
+            this.format = new Func<IEnumerable<IPropertyMap>, string>(BuildBatchInsert);
             return this;
         }
         public Constructor<T> Insert_Return_Id(T entity)
@@ -113,10 +124,17 @@ namespace Myn.Data.ORM
         public ISqlDocker Build()
         {
             var sql = new StringBuilder();
-            sql.Append(this._DMLType.ToString());
-            sql.Append(this._DMLType == DMLType.DELETE ? " FROM " : string.Empty);
-            sql.Append(this.entitymap.TabelName.Fill());
-            sql.Append(this.format == null ? string.Empty : format(this.property));
+            if (this._DMLType == DMLType.INSERT && this.list?.Count() > 0)
+            {
+                sql.Append(this.format == null ? string.Empty : format(this.property));
+            }
+            else
+            {
+                sql.Append(this._DMLType.ToString());
+                sql.Append(this._DMLType == DMLType.DELETE ? " FROM " : string.Empty);
+                sql.Append(this.entitymap.TabelName.Fill());
+                sql.Append(this.format == null ? string.Empty : format(this.property));
+            }
             if (_where != null)
             {
                 sql.Append($" WHERE {_where.ToString()}");
@@ -131,6 +149,8 @@ namespace Myn.Data.ORM
 
 
         protected abstract string BuildInsert(IEnumerable<IPropertyMap> propertys);
+        protected abstract string BuildBatchInsert(IEnumerable<IPropertyMap> propertys);
+
         protected abstract string BuildInsert_Return_Id(IEnumerable<IPropertyMap> propertys);
 
         protected abstract string BuildUpdate(IEnumerable<IPropertyMap> propertys);

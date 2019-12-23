@@ -76,6 +76,13 @@ namespace Myn.Data.ORM
             this.dbExecute.ExecuteNonQuery(docker, out row);
             return row > 0;
         }
+        public int Insert(IEnumerable<T> entity)
+        {
+            int row;
+            var docker = this.CreateContructor().Insert(entity).Build();
+            this.dbExecute.ExecuteNonQuery(docker, out row);
+            return row ;
+        }
         public void Insert_Return_Id(T entity, out int Id)
         {
             var docker = this.CreateContructor().Insert_Return_Id(entity).Build();

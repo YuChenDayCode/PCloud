@@ -38,7 +38,6 @@ namespace Myn.ThirdUtil.Qiniu
             FormUploader upload = new FormUploader(config);
             HttpResult result = upload.UploadFile(FileName, key, Token, null);
             return result.ToString();
-
         }
         public string UploadFile(string FileName, string BucketName = "", int Expires = 3600)
         {
@@ -61,6 +60,44 @@ namespace Myn.ThirdUtil.Qiniu
             //result.
             return result.ToString();
 
+        }
+        public string UploadFile(string FileName, byte[] data, string BucketName = "")
+        {
+            if (string.IsNullOrWhiteSpace(BucketName)) BucketName = this.Bucket;
+
+            Mac mac = new Mac(AccessKey, SecretKey);
+            PutPolicy pp = new PutPolicy();//上传参数
+            pp.Scope = $"{BucketName}:{FileName}";
+            pp.SetExpires(3600);
+            //pp.DeleteAfterDays = 1;
+            string Token = Auth.CreateUploadToken(mac, pp.ToJsonString());
+            Config config = new Config()
+            {
+                Zone = Zone.ZONE_CN_East,
+            };
+            FormUploader upload = new FormUploader(config);
+            HttpResult result = upload.UploadData(data, FileName, Token, null);
+            return result.ToString();
+        }
+        public string UploadFile(string FileName, Stream stream, string BucketName = "")
+        {
+            if (string.IsNullOrWhiteSpace(BucketName)) BucketName = this.Bucket;
+
+            Mac mac = new Mac(AccessKey, SecretKey);
+            PutPolicy pp = new PutPolicy();//上传参数
+
+            pp.Scope = Bucket;
+            pp.Scope = $"{BucketName}:{FileName}";
+            pp.SetExpires(3600);
+            //pp.DeleteAfterDays = 1;
+            string Token = Auth.CreateUploadToken(mac, pp.ToJsonString());
+            Config config = new Config()
+            {
+                Zone = Zone.ZONE_CN_East,
+            };
+            FormUploader upload = new FormUploader(config);
+            HttpResult result = upload.UploadStream(stream, FileName, Token, null);
+            return result.ToString();
         }
     }
 }

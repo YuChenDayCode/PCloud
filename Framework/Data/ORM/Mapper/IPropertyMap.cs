@@ -31,7 +31,12 @@ namespace Myn.Data.ORM
         PrimaryKey PrimaryKey { get; }
 
         string GetParamName(string paramMark = "@");
+        string GetManyParamName(string paramMark = "");
         string GetMapperColumnName(string split = ".");
         string GetQueryField();
+
+        string GetMapperSqlServerColumnName(string split = ".");
+
+        string GetQuerySqlServerField();
     }
 }

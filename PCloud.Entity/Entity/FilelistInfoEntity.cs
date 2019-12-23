@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PCloud.Entity.Entity
 {
-    [EntityMapper_TableName("c_filelist_info")]
+    [EntityMapper_TableName("c_file_info")]
     public class FilelistInfoEntity
     {
         [PrimaryKey(PrimaryType.Increment)]

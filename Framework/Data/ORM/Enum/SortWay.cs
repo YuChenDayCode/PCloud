@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Framework.Data.ORM.Enum
+namespace Myn.Data.ORM
 {
     public enum SortWay
     {

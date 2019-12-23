@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Linq.Expressions;
-using Framework.Data.ORM.Enum;
 
 namespace Myn.Data.ORM
 {

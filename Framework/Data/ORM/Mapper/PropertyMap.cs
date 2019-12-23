@@ -48,6 +48,11 @@ namespace Myn.Data.ORM
         {
             return $"{paramMark}{GetMapperColumnName("_")}";
         }
+        public string GetManyParamName(string paramMark="")
+        {
+            return $"@{this.TableName}_{this.ColumnName}{paramMark}";
+        }
+
 
         public string GetMapperColumnName(string split = ".")
         {
@@ -57,6 +62,16 @@ namespace Myn.Data.ORM
         public string GetQueryField()
         {
             return $"{this.GetMapperColumnName()} as {this.GetMapperColumnName("_")}";
+        }
+
+
+        public string GetMapperSqlServerColumnName(string split = ".")
+        {
+            return $"{this.TableName}{split}[{this.ColumnName}]";
+        }
+        public string GetQuerySqlServerField()
+        {
+            return $"{this.GetMapperSqlServerColumnName()} as {this.GetMapperColumnName("_")}";
         }
     }
 }

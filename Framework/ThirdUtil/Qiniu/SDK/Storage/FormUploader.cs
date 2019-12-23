@@ -239,8 +239,8 @@ namespace Qiniu.Storage
                 {
                     try
                     {
-                        stream.Close();
-                        stream.Dispose();
+                       stream.Close();
+                       stream.Dispose();
                     }
                     catch (Exception) { }
                 }
@@ -248,6 +248,8 @@ namespace Qiniu.Storage
 
             return result;
         }
+
+
 
         /// <summary>
         /// 默认的进度处理函数-上传文件
