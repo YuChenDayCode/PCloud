@@ -75,13 +75,7 @@ namespace PCloud.Web.Controllers
                     {
                         System.IO.File.Delete($"{Environment.CurrentDirectory}\\{file.FileName}");
                     }
-                    //using (StreamWriter sw = new StreamWriter(Response.Body))
-                    //{
-                    //    sw.Write(fileid);
-                    //}
-                    //return Json(result.ToString());
                 }
-                //return null;
             }
             catch (Exception ex)
             {
@@ -96,13 +90,10 @@ namespace PCloud.Web.Controllers
             {
                 string ppp = (100.0 * loadbytes / totalbytes).ToString("F2") + "%";
                 if (loadbytes < totalbytes)
-                {
                     Console.WriteLine("[{0}] [FormUpload] Progress: {1,7:0.000}%", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff"), 100.0 * loadbytes / totalbytes);
-                }
                 else
-                {
                     Console.WriteLine("[{0}] [FormUpload] Progress: {1,7:0.000}%\n", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff"), 100.0);
-                }
+               
                 if (!Response.HasStarted)
                 {
                     if (!Response.Headers.ContainsKey("Connection"))
@@ -112,14 +103,7 @@ namespace PCloud.Web.Controllers
 
                     Response.ContentType = "text/html";
                 }
-                
-                //Response.Body = new StreamReader()
                 Response.Body.Write(System.Text.Encoding.UTF8.GetBytes(ppp));
-                //Response.Body.Flush();
-                //Response.Body.Close();
-                //Response.Body.Dispose();
-                
-
             }
             catch (Exception ex)
             {

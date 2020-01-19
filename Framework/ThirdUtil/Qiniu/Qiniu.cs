@@ -35,7 +35,7 @@ namespace Myn.ThirdUtil.Qiniu
                 Zone = Zone.ZONE_CN_East,
                 UseHttps = true,
                 UseCdnDomains = true,
-                ChunkSize = ChunkUnit.U512K
+                ChunkSize = ChunkUnit.U1024K
             };
            // FormUploader upload = new FormUploader(config);
             ResumableUploader resumableUploader = new ResumableUploader(config);

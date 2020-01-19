@@ -32,7 +32,7 @@ namespace PCloud.Web.Controllers
              //string r = qiniu.CreatePrivateUrl("geek.exe"); */
             #endregion
 
-            IDbProvider<Test1Entity> db = new SqlServerProvider<Test1Entity>();
+            /*IDbProvider<Test1Entity> db = new SqlServerProvider<Test1Entity>();
             List<Test1Entity> list = new List<Test1Entity>();
             for (int i = 0; i < 5; i++)
             {
@@ -40,7 +40,7 @@ namespace PCloud.Web.Controllers
             }
 
             int ri = db.Insert(list);
-            var aa = db.All();
+            var aa = db.All();*/
             #region orm test
             /*           IDbProvider<FilelistInfoEntity> db = new MysqlProvider<FilelistInfoEntity>();
                        var model = new FilelistInfoEntity()
@@ -108,7 +108,7 @@ namespace PCloud.Web.Controllers
         public ActionResult GetUrl()
         {
             DownloadManage dm = new DownloadManage();
-            string r1 = dm.CreatePrivateUrl("xj.jpg", "q0c2lj5jy.bkt.clouddn.com");
+            string r1 = dm.CreatePrivateUrl("Git-2.22.0-64-bit.exe", "q3ik67k15.bkt.clouddn.com");
             return Json(r1);
         }
 
